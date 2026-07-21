@@ -27,12 +27,12 @@ export const content = {
       greeting: 'Olá, eu sou',
       headline:
         'Engenheiro de Software focado em backend, arquitetura de sistemas e no ecossistema Java.',
-      pitchHtml: `Sou Engenheiro de Software na <strong class="${STRONG}">DB1 Global</strong>, onde trabalho na arquitetura de vários produtos ao mesmo tempo. Meu forte é o backend com Java e Spring, mas também coloco a mão no frontend com Angular quando o projeto pede. No fim, o que me motiva é sempre o mesmo: pegar um problema complexo e entregar um sistema em que as pessoas confiam e que o próximo dev consegue manter sem sofrer.`,
+      pitchHtml: `Sou Engenheiro de Software na <strong class="${STRONG}">DB1 Global</strong>, onde trabalho na arquitetura de vários produtos. Meu forte é o backend com Java, mas também tenho experiência no frontend com Angular e React. No fim, o que me motiva é sempre o mesmo: pegar um problema complexo e entregar um sistema em que as pessoas confiam e que o próximo dev consegue manter sem sofrer.`,
       ctaBlog: 'Ler o blog',
       ctaAbout: 'Sobre mim',
       role: 'Eng. de Software · DB1 Global',
       locationEdu: 'Pato Branco, PR · ADS na UTFPR',
-      chips: ['Java', 'Spring', 'Angular', 'Quarkus', 'Microsserviços'],
+      chips: ['Spring', 'Angular', 'Quarkus', 'Microsserviços', 'Kafka', 'Postgres', 'Docker', 'Kubernetes'],
     },
     showcase: {
       title: 'Construindo software que aguenta o mundo real.',
@@ -46,13 +46,16 @@ export const content = {
         {
           title: 'Backend & Frameworks',
           items: [
-            'Java (do legado ao moderno)',
+            'Java 8 até 25',
             'Spring Boot',
-            'Spring Cloud Gateway',
             'Quarkus',
+            'Kafka',
+            'Postgres',
+            'Docker',
+            'Kubernetes',
           ],
         },
-        { title: 'Frontend', items: ['Angular', 'TypeScript'] },
+        { title: 'Frontend', items: ['Angular', 'TypeScript', 'React'] },
         {
           title: 'Arquitetura & Design',
           items: [
@@ -60,11 +63,11 @@ export const content = {
             'DDD',
             'Microsserviços',
             'SAGA',
-            'Strategy',
-            'Facade',
+            'Hexagonal Architecture',
+            'Postgres',
           ],
         },
-        { title: 'Infra & Deploy', items: ['Docker', 'Linux (Ubuntu)', 'WSL'] },
+        { title: 'Infra & Deploy', items: ['Docker', 'Linux (Ubuntu)', 'WSL', 'Kubernetes'] },
         {
           title: 'Observabilidade & Performance',
           items: [
@@ -83,7 +86,7 @@ export const content = {
         {
           name: 'MarketEasy',
           description:
-            'PWA com leitura de QR Code para validação de cupons fiscais, rodando em infraestrutura self-hosted com Docker e Linux.',
+            'PWA com leitura de QR Code para validação de cupons fiscais',
           tags: ['PWA', 'QR Code', 'Docker', 'Linux', 'Self-hosted'],
           href: 'https://www.marketeasyapp.com.br/',
         },

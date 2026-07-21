@@ -1,11 +1,11 @@
 ---
 name: revisar-post
 description: >-
-  Revisa e lapida um post existente do blog (src/content/blog/*.md) antes de
-  publicar: ajusta a voz pra não soar "IA", confere a estrutura, valida o
-  frontmatter e faz a checagem de segurança (nada proprietário/segredo/cliente).
-  Use quando o Matheus disser "revisa esse post", "dá uma passada nesse texto",
-  "tá pronto pra publicar?".
+  Revisa e lapida um post existente do blog (src/content/blog/pt|en/*.md)
+  antes de publicar: ajusta a voz pra não soar "IA", confere a estrutura,
+  valida o frontmatter, checa o par PT/EN e faz a checagem de segurança (nada
+  proprietário/segredo/cliente). Use quando o Matheus disser "revisa esse
+  post", "dá uma passada nesse texto", "tá pronto pra publicar?".
 ---
 
 # Skill: revisar-post
@@ -15,8 +15,9 @@ Passa o pente fino num post já escrito. Não reescreve do zero — melhora o qu
 ## Antes de revisar
 
 1. Leia o guia de estilo: `.claude/skills/novo-post/estilo.md`.
-2. Releia o post-modelo `src/content/blog/cqrs-nao-e-dois-bancos.md` pra calibrar.
-3. Leia o post a revisar por inteiro.
+2. Releia o post-modelo `src/content/blog/pt/cqrs-nao-e-dois-bancos.md`
+   (e sua tradução em `src/content/blog/en/cqrs-nao-e-dois-bancos.md`) pra calibrar.
+3. Leia o post a revisar por inteiro — PT e, se existir, o par em EN.
 
 ## Checklist
 
@@ -45,6 +46,17 @@ Passa o pente fino num post já escrito. Não reescreve do zero — melhora o qu
 - [ ] `description` em 1 frase.
 - [ ] `pubDate` no formato `AAAA-MM-DD`.
 - [ ] `tags`: 2–4, minúsculas, sem acento, reaproveitando as já usadas.
+
+### 5. Par PT/EN
+- [ ] Existe `src/content/blog/pt/<slug>.md` **e**
+      `src/content/blog/en/<slug>.md` com o mesmo basename. Se faltar um dos
+      dois, avise o Matheus (não gere a tradução sem confirmar) — sem par, o
+      toggle de idioma naquele post cai pro índice do blog em vez de linkar
+      direto (fallback correto, mas não o ideal).
+- [ ] `pubDate` igual nos dois arquivos.
+- [ ] `tags` equivalentes traduzidas (mesma quantidade, mesmo sentido).
+- [ ] EN é tradução fiel do PT — mesma estrutura, mesmo código, mesma voz —
+      não um resumo nem uma reescrita solta.
 
 ## Como reportar
 

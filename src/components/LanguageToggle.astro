@@ -4,10 +4,11 @@ import { getAltPath } from '../i18n/utils';
 
 interface Props {
   lang: Lang;
+  altHref?: string;
 }
-const { lang } = Astro.props;
+const { lang, altHref } = Astro.props;
 const c = content[lang];
-const altPath = getAltPath(Astro.url.pathname, lang);
+const altPath = altHref ?? getAltPath(Astro.url.pathname, lang);
 ---
 
 <a

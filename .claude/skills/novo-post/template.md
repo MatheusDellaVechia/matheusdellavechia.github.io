@@ -11,6 +11,10 @@ tags: ['tag1', 'tag2']
   Estrutura (ver .claude/skills/novo-post/estilo.md e o post de CQRS).
   Alvo: 250–500 palavras. Voz: primeira pessoa, PT-BR, direto.
   Apague estes comentários antes de publicar.
+
+  Este esqueleto é pra src/content/blog/pt/<slug>.md. Depois de escrever o PT,
+  gere a tradução em src/content/blog/en/<slug>.md com o mesmo esqueleto,
+  mesmo código, mesma voz — ver a seção "Bilíngue" do estilo.md.
 -->
 
 <!-- GANCHO: 1–2 parágrafos. A crença comum, o mito ou a situação do dia a dia.

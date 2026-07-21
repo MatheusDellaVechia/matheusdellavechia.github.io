@@ -20,8 +20,9 @@ tinha entendido de verdade.
 
 ## Como novos posts são criados
 
-Cada post é um arquivo Markdown/MDX em `src/content/blog/`. Basta criar um
-novo arquivo, preencher o frontmatter e dar `git push` — o deploy é automático.
+Cada post é um arquivo Markdown/MDX em `src/content/blog/pt/`, com uma
+tradução correspondente em `src/content/blog/en/`. Basta criar os dois
+arquivos, preencher o frontmatter e dar `git push` — o deploy é automático.
 
 ```ts
 // exemplo de frontmatter tipado (src/content.config.ts)

@@ -68,9 +68,31 @@ tags: ['tag1', 'tag2']  # minúsculas, sem acento; 2–4 tags
 Regras: `title` sem ponto final; `description` 1 frase; `tags` reaproveite as já
 usadas quando fizer sentido (ex.: `arquitetura`, `java`, `spring`, `cqrs`, `ddd`).
 
+## Bilíngue (regra atual — todo post novo sai em PT e EN)
+
+O blog é bilíngue por pasta: `src/content/blog/pt/<slug>.md` (canônico, o que
+o Matheus escreve) e `src/content/blog/en/<slug>.md` (tradução). O toggle de
+idioma na página do post liga um ao outro pelo **mesmo slug** — por isso o
+basename do arquivo tem que ser idêntico nas duas pastas.
+
+- O Matheus escreve em PT-BR. Traduzir pro EN **faz parte do trabalho**, não é
+  opcional nem precisa ser pedido de novo a cada post — só pule a tradução se
+  o Matheus disser explicitamente "só PT por enquanto".
+- Tradução é fiel ao conteúdo e à voz (mesma estrutura, mesmo código, mesmo
+  tom direto/primeira pessoa) — não é reescrita nem resumo.
+- Frontmatter também é traduzido por completo: `title`, `description` e
+  `tags` em inglês (ex.: `arquitetura` → `architecture`; `cqrs`/`ddd` ficam
+  como estão). `pubDate` é o mesmo nos dois arquivos.
+- Código nos exemplos não se traduz (identificadores ficam como estão);
+  comentários em linguagem natural dentro do código, se houver, traduza.
+- Se não existir tradução pra um post (ex.: conteúdo legado), o toggle de
+  idioma naquela página cai pro índice do blog no outro idioma em vez de dar
+  404 — mas isso é um fallback, não o padrão esperado pra posts novos.
+
 ## Arquivo
 
-- Local: `src/content/blog/<slug>.md`
-- `slug`: kebab-case, sem acento, derivado do título. Ex.: "CQRS não é sobre ter
-  dois bancos" → `cqrs-nao-e-dois-bancos`.
-- Não sobrescreva um arquivo existente — confira antes com `ls src/content/blog/`.
+- PT: `src/content/blog/pt/<slug>.md` — EN: `src/content/blog/en/<slug>.md`.
+- `slug`: kebab-case, sem acento, derivado do título, **igual nos dois
+  arquivos**. Ex.: "CQRS não é sobre ter dois bancos" → `cqrs-nao-e-dois-bancos`.
+- Não sobrescreva um arquivo existente — confira antes com
+  `ls src/content/blog/pt/ src/content/blog/en/`.

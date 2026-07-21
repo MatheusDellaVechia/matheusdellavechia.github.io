@@ -7,8 +7,9 @@ import { content, type Lang } from '../i18n/content';
 interface Props {
   containerClass?: string;
   lang?: Lang;
+  altHref?: string;
 }
-const { containerClass = 'max-w-3xl', lang = 'pt-br' } = Astro.props;
+const { containerClass = 'max-w-3xl', lang = 'pt-br', altHref } = Astro.props;
 const c = content[lang];
 
 const navLinks = [
@@ -55,7 +56,7 @@ const isActive = (href: string): boolean =>
           </a>
         ))
       }
-      <LanguageToggle lang={lang} />
+      <LanguageToggle lang={lang} altHref={altHref} />
       <ThemeToggle />
     </div>
   </nav>

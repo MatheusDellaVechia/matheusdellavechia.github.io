@@ -1,20 +1,28 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection, render } from 'astro:content';
+import { render } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 import { content } from '../../i18n/content';
+import { getPostsByLang, getTranslatedSlugs, postSlug } from '../../lib/blog';
 
 export const getStaticPaths = (async () => {
-  const posts = await getCollection('blog', ({ data }) => !data.draft);
-  return posts.map((post) => ({
-    params: { slug: post.id },
-    props: { post },
-  }));
+  const posts = await getPostsByLang('pt-br');
+  const enSlugs = await getTranslatedSlugs('en');
+  return posts.map((post) => {
+    const slug = postSlug(post.id);
+    return {
+      params: { slug },
+      props: {
+        post,
+        altHref: enSlugs.has(slug) ? `/en/blog/${slug}/` : '/en/blog',
+      },
+    };
+  });
 }) satisfies GetStaticPaths;
 
 const lang = 'pt-br';
 const c = content[lang];
-const { post } = Astro.props;
+const { post, altHref } = Astro.props;
 const { Content } = await render(post);
 
 const fmt = (d: Date) =>
@@ -29,6 +37,7 @@ const fmt = (d: Date) =>
   title={post.data.title}
   description={post.data.description}
   lang={lang}
+  altHref={altHref}
 >
   <article class="mx-auto max-w-3xl">
     <a

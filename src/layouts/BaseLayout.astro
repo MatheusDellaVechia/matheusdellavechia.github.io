@@ -9,10 +9,15 @@ interface Props {
   title?: string;
   description?: string;
   lang?: Lang;
+  altHref?: string;
 }
 
-const { title, lang = 'pt-br', description = content[lang].meta.homeDesc } =
-  Astro.props;
+const {
+  title,
+  lang = 'pt-br',
+  description = content[lang].meta.homeDesc,
+  altHref,
+} = Astro.props;
 const htmlLang = content[lang].htmlLang;
 const pageTitle = title ? `${title} · ${SITE_TITLE}` : SITE_TITLE;
 const site = Astro.site ?? new URL(SITE_URL);
@@ -73,7 +78,7 @@ const containerClass = 'max-w-7xl';
   <body
     class="flex min-h-screen flex-col bg-white text-zinc-800 antialiased selection:text-zinc-900 dark:bg-zinc-950 dark:text-zinc-300"
   >
-    <Header containerClass={containerClass} lang={lang} />
+    <Header containerClass={containerClass} lang={lang} altHref={altHref} />
     <main
       class:list={[
         'mx-auto w-full flex-1 px-5 py-10 sm:px-6',
