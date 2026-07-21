@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AboutContent from '../../components/AboutContent.astro';
+import { content } from '../../i18n/content';
+
+const lang = 'en';
+const m = content[lang].meta;
+---
+
+<BaseLayout title={m.aboutTitle} description={m.aboutDesc} lang={lang}>
+  <AboutContent lang={lang} />
+</BaseLayout>

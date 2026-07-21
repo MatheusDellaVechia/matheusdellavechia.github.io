@@ -1,0 +1,87 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+import { SITE_TITLE, SITE_URL } from '../consts';
+import { content, type Lang } from '../i18n/content';
+
+interface Props {
+  title?: string;
+  description?: string;
+  lang?: Lang;
+}
+
+const { title, lang = 'pt-br', description = content[lang].meta.homeDesc } =
+  Astro.props;
+const htmlLang = content[lang].htmlLang;
+const pageTitle = title ? `${title} · ${SITE_TITLE}` : SITE_TITLE;
+const site = Astro.site ?? new URL(SITE_URL);
+const canonicalURL = new URL(Astro.url.pathname, site);
+// Largura única em todas as páginas → header/footer não "pulam" de tamanho.
+// O conteúdo de leitura (posts, Sobre) é afunilado internamente.
+const containerClass = 'max-w-7xl';
+---
+
+<!doctype html>
+<html lang={htmlLang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={SITE_TITLE}
+      href={new URL('rss.xml', site)}
+    />
+
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content={SITE_TITLE} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Aplica o tema antes de pintar a tela (evita flash) -->
+    <script is:inline>
+      const theme = (() => {
+        const stored =
+          typeof localStorage !== 'undefined' && localStorage.getItem('theme');
+        if (stored) return stored;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light';
+      })();
+      document.documentElement.classList.toggle('dark', theme === 'dark');
+    </script>
+  </head>
+  <body
+    class="flex min-h-screen flex-col bg-white text-zinc-800 antialiased selection:text-zinc-900 dark:bg-zinc-950 dark:text-zinc-300"
+  >
+    <Header containerClass={containerClass} lang={lang} />
+    <main
+      class:list={[
+        'mx-auto w-full flex-1 px-5 py-10 sm:px-6',
+        containerClass,
+      ]}
+    >
+      <slot />
+    </main>
+    <Footer containerClass={containerClass} />
+  </body>
+</html>

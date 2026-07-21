@@ -1,0 +1,85 @@
+---
+import { SOCIALS } from '../consts';
+import { content, type Lang } from '../i18n/content';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const c = content[lang];
+const a = c.about;
+---
+
+<!-- ============ HEADER ============ -->
+<section class="mx-auto max-w-3xl py-4">
+  <h1
+    class="text-3xl font-extrabold tracking-tight text-zinc-900 sm:text-4xl dark:text-white"
+  >
+    {a.title}
+  </h1>
+  <p class="mt-3 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
+    {a.lead}
+  </p>
+</section>
+
+<div class="mx-auto mt-6 max-w-3xl space-y-10">
+  <!-- ============ A JORNADA ============ -->
+  <section>
+    <h2 class="text-xl font-bold text-zinc-900 dark:text-white">
+      {a.journeyTitle}
+    </h2>
+    <div class="mt-3 space-y-4 leading-relaxed text-zinc-600 dark:text-zinc-300">
+      {a.journey.map((p) => <p set:html={p} />)}
+    </div>
+  </section>
+
+  <!-- ============ EXPERIÊNCIA PRÁTICA ============ -->
+  <section>
+    <h2 class="text-xl font-bold text-zinc-900 dark:text-white">
+      {a.workTitle}
+    </h2>
+    <div class="mt-3 space-y-4 leading-relaxed text-zinc-600 dark:text-zinc-300">
+      {a.work.map((p) => <p set:html={p} />)}
+    </div>
+  </section>
+
+  <!-- ============ OBJETIVOS ============ -->
+  <section>
+    <h2 class="text-xl font-bold text-zinc-900 dark:text-white">
+      {a.goalsTitle}
+    </h2>
+    <div class="mt-3 space-y-4 leading-relaxed text-zinc-600 dark:text-zinc-300">
+      {a.goals.map((p) => <p set:html={p} />)}
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section
+    class="rounded-2xl border border-zinc-200 bg-zinc-50 p-6 sm:p-8 dark:border-zinc-800 dark:bg-zinc-900"
+  >
+    <h2 class="text-xl font-bold text-zinc-900 dark:text-white">
+      {a.ctaTitle}
+    </h2>
+    <p class="mt-2 max-w-xl text-zinc-600 dark:text-zinc-400">
+      {a.ctaText}
+    </p>
+    <div class="mt-5 flex flex-wrap items-center gap-3">
+      <a
+        href={SOCIALS.linkedin}
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-2 rounded-xl bg-zinc-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-zinc-700 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+      >
+        LinkedIn
+      </a>
+      <a
+        href={SOCIALS.github}
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-2 rounded-xl border border-zinc-300 px-5 py-2.5 text-sm font-semibold text-zinc-700 transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
+      >
+        GitHub
+      </a>
+    </div>
+  </section>
+</div>

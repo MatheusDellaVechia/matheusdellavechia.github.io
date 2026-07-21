@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogListing from '../../components/BlogListing.astro';
+import { content } from '../../i18n/content';
+
+const lang = 'pt-br';
+const m = content[lang].meta;
+---
+
+<BaseLayout title={m.blogTitle} description={m.blogDesc} lang={lang}>
+  <BlogListing lang={lang} />
+</BaseLayout>

@@ -1,0 +1,62 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+import LanguageToggle from './LanguageToggle.astro';
+import { SITE_TITLE } from '../consts';
+import { content, type Lang } from '../i18n/content';
+
+interface Props {
+  containerClass?: string;
+  lang?: Lang;
+}
+const { containerClass = 'max-w-3xl', lang = 'pt-br' } = Astro.props;
+const c = content[lang];
+
+const navLinks = [
+  { href: c.paths.home, label: c.nav.home },
+  { href: c.paths.blog, label: c.nav.blog },
+  { href: c.paths.about, label: c.nav.about },
+];
+const homeHrefs = ['/', '/en/'];
+
+const path = Astro.url.pathname;
+const isActive = (href: string): boolean =>
+  homeHrefs.includes(href) ? path === href : path.startsWith(href);
+---
+
+<header
+  class="sticky top-0 z-40 border-b border-zinc-200/70 bg-white/80 backdrop-blur-md dark:border-zinc-800/70 dark:bg-zinc-950/80"
+>
+  <nav
+    class:list={[
+      'mx-auto flex items-center justify-between px-5 py-4 sm:px-6',
+      containerClass,
+    ]}
+  >
+    <a
+      href={c.paths.home}
+      class="text-base font-extrabold tracking-tight text-zinc-900 dark:text-white"
+    >
+      {SITE_TITLE}
+    </a>
+
+    <div class="flex items-center gap-1 sm:gap-2">
+      {
+        navLinks.map((l) => (
+          <a
+            href={l.href}
+            class:list={[
+              'rounded-lg px-3 py-1.5 text-sm font-medium transition-colors',
+              isActive(l.href)
+                ? 'bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-white'
+                : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white',
+            ]}
+          >
+            {l.label}
+          </a>
+        ))
+      }
+      <LanguageToggle lang={lang} />
+      <ThemeToggle />
+    </div>
+  </nav>
+</header>
