@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://matheus-della-vechia.vercel.app/sitemap-index.xml

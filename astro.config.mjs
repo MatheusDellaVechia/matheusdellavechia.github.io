@@ -6,8 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  // Troque pela URL final (ex.: https://seudominio.vercel.app) antes do deploy.
-  site: 'https://matheus-oliveira.vercel.app',
+  site: 'https://matheus-della-vechia.vercel.app',
   integrations: [mdx(), sitemap()],
   vite: {
     plugins: [tailwindcss()],

@@ -2,7 +2,7 @@
 export const SITE_TITLE = 'Matheus Della Vechia';
 export const SITE_DESCRIPTION =
   'Insights, curiosidades e anotações sobre engenharia de software, arquitetura e o ecossistema Java.';
-export const SITE_URL = 'https://matheus-oliveira.vercel.app';
+export const SITE_URL = 'https://matheus-della-vechia.vercel.app';
 export const AUTHOR = 'Matheus Della Vechia';
 
 // Frase de impacto exibida no topo da Home.
