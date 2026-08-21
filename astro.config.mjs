@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://matheus-della-vechia.vercel.app',
+  site: 'https://matheusdellavechia.github.io',
   integrations: [mdx(), sitemap()],
   vite: {
     plugins: [tailwindcss()],
